@@ -59,6 +59,13 @@ where last_name like '%es';
 --9. How many payment amounts (4.99, 5.99, etc.) had a number of rentals above 250 for customers  with ids between 380 and 430? (use group by and having > 250) 
 
 --10. Within the film table, how many rating categories are there? And what rating has the most  movies total?
---Answer: There are 5 rating categories
+--Answer: There are 5 rating categories, PG-13 has the most movie totals at 223 movies, NC-17 has 210, R has 195, PG has 194, G has 178
 --select *
 --from film
+
+select rating, count(title)
+from film 
+group by rating 
+order by count(title);
+
+
