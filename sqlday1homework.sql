@@ -13,8 +13,11 @@ from payment
 where amount between 3.99 and 5.99;
 
 --3. What film does the store have the most of? (search in inventory) 
---select  count(inventory_id)
+--ANSWER: Film id 200 has 9 available copies making it the max and is called "Curtain"
+select film_id, count(*)
 from inventory
+group by film_id
+order by count(*) desc;
 
 
 --4. How many customers have the last name ‘William’? 
@@ -24,6 +27,15 @@ from customer
 where last_name = 'William'; 
  
 --5. What store employee (get the id) sold the most rentals? 
+--ANSWER: staff_id of 1 sold 7292 rentals and staff_id of 2 sold 7304 rentals making staff_id 2 have the highest amount of rentals
+select *
+from payment 
+where staff_id = 2;
+
+select *
+from payment 
+where staff_id = 1;
+
 
 --6. How many different district names are there? 
 --ANSWER: 603 district names
