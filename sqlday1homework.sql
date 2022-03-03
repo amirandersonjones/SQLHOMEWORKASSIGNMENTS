@@ -44,6 +44,11 @@ from address;
 
 
 --7. What film has the most actors in it? (use film_actor table and get film_id) 8. From store_id 1, 
+--ANSWER: film 508 has the most actors of 16 in it.
+select film_id, count(actor_id)
+from film_actor
+group by film_id
+order by count(actor_id) desc;
 
 --8. How many customers have a last name ending with ‘es’? (use customer table) 
 --ANSWER: 21 customers
