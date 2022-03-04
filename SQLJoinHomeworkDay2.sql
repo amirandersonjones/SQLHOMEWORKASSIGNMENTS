@@ -72,11 +72,20 @@ ON staff.staff_id = payment.staff_id
 GROUP BY staff.staff_id;
 
 
-
 --6. How many movies of each rating are 
 --there? 
+--select film_id, title, (rating)
+--from film;
+--ANSWER: PG-13 HAS 223, NC-17 HAS 210, G HAS 178, PG HAS 194, R HAS 195
+select rating, count(*)
+from film
+group by rating;
 
 --7.Show all customers who have made a single payment above $6.99 (Use Subqueries)
 
 
 --8. How many free rentals did our stores give away?
+--ANSWER- 24 FREE RENTALS
+select count(payment_id)
+from payment
+where amount = 0;
