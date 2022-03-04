@@ -90,8 +90,13 @@ group by rating;
 --7.Show all customers who have made a single payment above $6.99 (Use Subqueries)
 
 
+
 --8. How many free rentals did our stores give away?
 --ANSWER- 24 FREE RENTALS
 select count(payment_id)
 from payment
 where amount = 0;
+
+
+----DELETE FROM <table name> WHERE <condition>
+---DROP TABLE <table name>;
