@@ -29,6 +29,12 @@ where amount > 6.99;
 
 --3. Show all customers names who have made payments over $175(use subqueries) 
 
+select first_name, last_name, customer.customer_id, payment.amount
+from customer
+join payment
+on customer.customer_id = payment.customer_id
+where payment.amount > 175
+
 
 --4. List all customers that live in Nepal (use the city 
 --table) 
