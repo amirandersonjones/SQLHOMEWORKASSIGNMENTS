@@ -28,12 +28,21 @@ where amount > 6.99;
 
 
 --3. Show all customers names who have made payments over $175(use subqueries) 
+select * from customer;
 
-select first_name, last_name, customer.customer_id, payment.amount
-from customer
-join payment
-on customer.customer_id = payment.customer_id
-where payment.amount > 175
+select customer_id 
+from payment 
+group by customer_id 
+having sum(amount) > 175;
+
+select *
+from customer 
+where customer_id in(
+	select customer_id 
+	from payment 
+	group by customer_id 
+	having sum(amount) > 175
+);
 
 
 --4. List all customers that live in Nepal (use the city 
@@ -88,7 +97,21 @@ from film
 group by rating;
 
 --7.Show all customers who have made a single payment above $6.99 (Use Subqueries)
+select * from customer;
 
+select customer_id 
+from payment 
+group by customer_id 
+having sum(amount) > 6.99;
+
+select *
+from customer 
+where customer_id in(
+	select customer_id 
+	from payment 
+	group by customer_id 
+	having sum(amount) > 6.99;
+);
 
 
 --8. How many free rentals did our stores give away?
