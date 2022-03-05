@@ -15,6 +15,17 @@ values('9DFD9DF97DFD5SS4D', 'ford', 'contour', 'white', '1997');
 insert into cars(vin, make, model, color, year)
 values('9DFD9DF97D48GHS4D', 'pontiac', 'grand prix', 'green', '1999');
 
+insert into cars(vin, make, model, color, year)
+values('922D9DF97D48GHS4D', 'honda', 'ridgeline', 'black', '2022');
+
+insert into cars(vin, make, model, color, year)
+values('9PFD9DF97D48GHS4D', 'jeep', 'cherokee', 'white', '2020');
+
+insert into cars(vin, make, model, color, year)
+values('0P9DF97D48GHS8Y4D', 'chevrolet', 'maxima', 'purple', '2019');
+
+insert into cars(vin, make, model, color, year)
+values('YT67N97D48GHS8Y4D', 'chevrolet', 'cobalt', 'red', '2019');
 
 select *from Cars
 
@@ -29,6 +40,24 @@ values('transmission', 'eaton fuller');
 
 insert into parts_inventory(part_name, brand)
 values('shocks', 'monroe');
+
+insert into parts_inventory(part_name, brand)
+values('brake drums', 'monroe');
+
+insert into parts_inventory(part_name, brand)
+values('power steering fluid', 'prestone');
+
+insert into parts_inventory(part_name, brand)
+values('coolant', 'prestone');
+
+insert into parts_inventory(part_name, brand)
+values('tires r22.5 radials', 'bridgestone');
+
+insert into parts_inventory(part_name, brand)
+values('power steering pump', 'cardone');
+
+insert into parts_inventory(part_name, brand)
+values('windshield', 'general motors');
 
 select * from parts_inventory
 
@@ -86,7 +115,7 @@ select * from mechanics
 
 
 create table Invoice(
-	column name data type constraints
+	--column name data type constraints
 	invoice_ID serial primary key,
 	car_ID Int not null,
 	foreign key(car_id) references cars(car_id),
@@ -96,7 +125,18 @@ create table Invoice(
 	price int
 );
 
-select * from invoice
+insert into invoice(car_id, salesperson_id, invoice_date, price)
+values(1, 5, 'August 1 2022', 5);
+
+insert into invoice(car_id, salesperson_id, invoice_date, price)
+values(6, 5, 'September 5 1999', 10);
+
+insert into invoice(car_id, salesperson_id, invoice_date, price)
+values(3, 4, 'February 4 2021', 100);
+
+select *
+from invoice;
+
 
 create table customer(
 	customer_id serial primary key,
@@ -107,6 +147,18 @@ create table customer(
 	email varchar(150),
 	phone int
 );
+
+insert into customer(customer_id, car_id, first_name, last_name, email, phone)
+values(49, 6, 'Craig', 'Paul', 'craigp@gmail.com', 3849876);
+
+insert into customer(customer_id, car_id, first_name, last_name, email, phone)
+values(50, 3, 'Minnie', 'Aplois', 'ap@gmail.com', 957697);
+
+insert into customer(customer_id, car_id, first_name, last_name, email, phone)
+values(51, 2, 'Simon', 'Perry', 'simoneperry@yahoomail.com', 1849876);
+
+insert into customer(customer_id, car_id, first_name, last_name, email, phone)
+values(52, 1, 'Kellie', 'Chandley', 'kcp@sbcglobal.com', 5849876);
 
 select * from customer
 
@@ -120,6 +172,19 @@ create table service_ticket(
 	price numeric(8,2)
 );
 
+insert into service_ticket(service_id, car_id, part_id, service_done, price)
+values('123', 6, 3, 'tire rotation', 30);
+
+insert into service_ticket(service_id, car_id, part_id, service_done, price)
+values('1753', 6, 1, 'transmission rebuild', 2530);
+
+insert into service_ticket(service_id, car_id, part_id, service_done, price)
+values('789', 1, 5, 'coolant flush', 230);
+
+insert into service_ticket(service_id, car_id, part_id, service_done, price)
+values('6789', 1, 4, 'power steering flush', 250);
+
+
 select * from service_ticket
 
 create table mechanics_service(
@@ -129,8 +194,19 @@ create table mechanics_service(
 	foreign key (mechanic_id) references mechanics(mechanic_id)
 );
 
-insert into mechanics_service(mechanic_id)
-values('2');
+insert into mechanics_service(mechanic_id,service_id)
+values(7, 123);
+
+insert into mechanics_service(mechanic_id,service_id)
+values(3, 789);
+
+insert into mechanics_service(mechanic_id,service_id)
+values(1, 1753);
+
+insert into mechanics_service(mechanic_id,service_id)
+values(5, 6789);
+
+
 
 select * from mechanics_service 
 
