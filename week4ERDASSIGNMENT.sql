@@ -145,20 +145,22 @@ create table customer(
 	first_name varchar(150),
 	last_name varchar(150),
 	email varchar(150),
-	phone int
+	phone text
 );
 
-insert into customer(customer_id, car_id, first_name, last_name, email, phone)
-values(49, 6, 'Craig', 'Paul', 'craigp@gmail.com', 3849876);
+drop table customer;
 
-insert into customer(customer_id, car_id, first_name, last_name, email, phone)
-values(50, 3, 'Minnie', 'Aplois', 'ap@gmail.com', 957697);
+insert into customer(car_id, first_name, last_name, email, phone)
+values(6, 'Craig', 'Paul', 'craigp@gmail.com', 7733849876);
 
-insert into customer(customer_id, car_id, first_name, last_name, email, phone)
-values(51, 2, 'Simon', 'Perry', 'simoneperry@yahoomail.com', 1849876);
+insert into customer(car_id, first_name, last_name, email, phone)
+values(3, 'Minnie', 'Aplois', 'ap@gmail.com', 219957697);
 
-insert into customer(customer_id, car_id, first_name, last_name, email, phone)
-values(52, 1, 'Kellie', 'Chandley', 'kcp@sbcglobal.com', 5849876);
+insert into customer(car_id, first_name, last_name, email, phone)
+values(2, 'Simon', 'Perry', 'simoneperry@yahoomail.com', 8471849876);
+
+insert into customer(car_id, first_name, last_name, email, phone)
+values(1, 'Kellie', 'Chandley', 'kcp@sbcglobal.com', 5849876);
 
 select * from customer
 
@@ -172,17 +174,19 @@ create table service_ticket(
 	price numeric(8,2)
 );
 
-insert into service_ticket(service_id, car_id, part_id, service_done, price)
-values('123', 6, 3, 'tire rotation', 30);
+drop table service_ticket;
 
-insert into service_ticket(service_id, car_id, part_id, service_done, price)
-values('1753', 6, 1, 'transmission rebuild', 2530);
+insert into service_ticket(car_id, part_id, service_done, price)
+values(6, 3, 'tire rotation', 30);
 
-insert into service_ticket(service_id, car_id, part_id, service_done, price)
-values('789', 1, 5, 'coolant flush', 230);
+insert into service_ticket(car_id, part_id, service_done, price)
+values(6, 1, 'transmission rebuild', 2530);
 
-insert into service_ticket(service_id, car_id, part_id, service_done, price)
-values('6789', 1, 4, 'power steering flush', 250);
+insert into service_ticket(car_id, part_id, service_done, price)
+values(1, 5, 'coolant flush', 230);
+
+insert into service_ticket(car_id, part_id, service_done, price)
+values(1, 4, 'power steering flush', 250);
 
 
 select * from service_ticket
@@ -195,18 +199,18 @@ create table mechanics_service(
 );
 
 insert into mechanics_service(mechanic_id,service_id)
-values(7, 123);
+values(7, 3);
 
 insert into mechanics_service(mechanic_id,service_id)
-values(3, 789);
+values(3, 1);
 
 insert into mechanics_service(mechanic_id,service_id)
-values(1, 1753);
+values(1, 2);
 
 insert into mechanics_service(mechanic_id,service_id)
-values(5, 6789);
+values(5, 4);
 
-
+drop table mechanics_service;
 
 select * from mechanics_service 
 
