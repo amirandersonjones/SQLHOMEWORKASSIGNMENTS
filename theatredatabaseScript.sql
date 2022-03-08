@@ -58,6 +58,25 @@ create table concessions(
 	foreign key (product_id) references products (product_id)
 );
 
+
+insert into concessions(store_id, product_id)
+values(1, 10);
+
+insert into concessions(store_id, product_id)
+values(3, 5);
+
+insert into concessions(store_id, product_id)
+values(2, 7);
+
+insert into concessions(store_id, product_id)
+values(1, 10);
+
+insert into concessions(store_id, product_id)
+values(4, 10);
+
+insert into concessions(store_id, product_id)
+values(1, 6);
+
 select *from concessions
 
 create table movies(
@@ -99,29 +118,58 @@ create table customers(
 );
 
 insert into customers(first_name, last_name, email, phone)
-values('Craig', 'Mack', 'craigmack@aol.com', 219-456-9738);
+values('Craig', 'Mack', 'craigmack@aol.com', 2194569738);
 
 insert into customers(first_name, last_name, email, phone)
-values('Mary', 'Poppins', 'mp@yahoo.com', 773-456-9738);
+values('Mary', 'Poppins', 'mp@yahoo.com', 7734569738);
+
+insert into customers(first_name, last_name, email, phone)
+values('Jack', 'Spratt', 'js@gmail.com', 8474569738);
+
+insert into customers(first_name, last_name, email, phone)
+values('Jessica', 'Brown', 'jb@gmail.com', 6544569738);
+
+insert into customers(first_name, last_name, email, phone)
+values('Bobby', 'Whitney', 'bobbywhitney@gmail.com', 7754569738);
+
+delete from customers
+where first_name = 'Craig';
+
+delete from customers
+where first_name = 'Mary';
+
+
+alter table customers
+alter column phone
+type text;
 
 select * from customers
+
+
+
+drop table tickets;
+
 
 create table tickets(
 	ticket_id serial primary key,
 	customer_id int not null,
 	foreign key (customer_id) references customers(customer_id),
+	store_id int not null,
+	foreign key (store_id) references theatre (store_id),
 	movie_id int not null,
 	foreign key (movie_id) references movies(movie_id),
 	movie_name varchar(250) 
 );
 
---insert into tickets(customer_id, movie_id, movie_name)
---values(1,5, 'The Help');
 
---insert into tickets(customer_id, movie_id, movie_name)
---values(2,1,'The Color Purple');
 
---insert into tickets(customer_id, movie_id, movie_name)
---values(1,10, 'Fences');
+insert into tickets(customer_id, store_id, movie_id, movie_name)
+values(5, 4, 5, 'The Help');
+
+insert into tickets(customer_id, store_id, movie_id, movie_name)
+values(9, 2, 1, 'The Color Purple');
+
+insert into tickets(customer_id, store_id, movie_id, movie_name)
+values(7, 1, 10, 'Fences');
 
 select * from tickets
